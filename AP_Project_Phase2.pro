@@ -14,9 +14,13 @@ SOURCES += \
     Me_Tab/Me.cpp \
     Messaging_Tab/Messaging.cpp \
     MyNetwork_Tab/MyNetwork.cpp \
+    comment.cpp \
     content.cpp \
+    like.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    newpost.cpp \
+    post.cpp
 
 HEADERS += \
     Home_Tab/Home.h \
@@ -24,8 +28,12 @@ HEADERS += \
     Me_Tab/Me.h \
     Messaging_Tab/Messaging.h \
     MyNetwork_Tab/MyNetwork.h \
+    comment.h \
     content.h \
-    mainwindow.h
+    like.h \
+    mainwindow.h \
+    newpost.h \
+    post.h
 
 FORMS += \
     Home_Tab/Home.ui \
@@ -33,7 +41,8 @@ FORMS += \
     Me_Tab/Me.ui \
     Messaging_Tab/Messaging.ui \
     MyNetwork_Tab/MyNetwork.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    newpost.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
