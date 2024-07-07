@@ -1,5 +1,5 @@
-#include "mynetwork.h"
-#include "ui_mynetwork.h"
+#include "MyNetwork.h"
+#include "ui_MyNetwork.h"
 
 MyNetwork::MyNetwork(QWidget *parent) :
     QWidget(parent),

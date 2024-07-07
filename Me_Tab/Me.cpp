@@ -1,5 +1,5 @@
-#include "me.h"
-#include "ui_me.h"
+#include "Me.h"
+#include "ui_Me.h"
 
 Me::Me(QWidget *parent) :
     QWidget(parent),

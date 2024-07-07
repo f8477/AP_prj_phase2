@@ -1,11 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "home.h"
-#include "jobs.h"
-#include "mynetwork.h"
-#include "messaging.h"
-#include "me.h"
+#include "Home_Tab/Home.h"
+#include "MyNetwork_Tab/MyNetwork.h"
+#include "Jobs_Tab/Jobs.h"
+#include "Messaging_Tab/Messaging.h"
+#include "Me_Tab/Me.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -13,13 +13,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    ui->origin->insertTab(ui->origin->count(), new Home(), QIcon(QString("")), "Home");
-    ui->origin->insertTab(ui->origin->count(), new MyNetwork(), QIcon(QString("")), "My Network");
-    ui->origin->insertTab(ui->origin->count(), new Jobs(), QIcon(QString("")), "Jobs");
-    ui->origin->insertTab(ui->origin->count(), new Messaging(), QIcon(QString("")), "Messaging");
-    ui->origin->insertTab(ui->origin->count(), new Me(), QIcon(QString("")), "Me");
-
-    ui->origin->setCurrentIndex(ui->origin->count()-1);  // this line set the default tab when start the project
+    ui->originTabs->insertTab(ui->originTabs->count(), new Home(), QIcon(QString("")), "Home");
+    ui->originTabs->insertTab(ui->originTabs->count(), new MyNetwork(), QIcon(QString("")), "My Network");
+    ui->originTabs->insertTab(ui->originTabs->count(), new Jobs(), QIcon(QString("")), "Jobs");
+    ui->originTabs->insertTab(ui->originTabs->count(), new Messaging(), QIcon(QString("")), "Messaging");
+    ui->originTabs->insertTab(ui->originTabs->count(), new Me(), QIcon(QString("")), "Me");
 }
 
 MainWindow::~MainWindow()

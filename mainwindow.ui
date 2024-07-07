@@ -14,17 +14,14 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="origin">
+   <widget class="QTabWidget" name="originTabs">
     <property name="geometry">
      <rect>
       <x>4</x>
-      <y>10</y>
+      <y>9</y>
       <width>1271</width>
       <height>661</height>
      </rect>
-    </property>
-    <property name="currentIndex">
-     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">

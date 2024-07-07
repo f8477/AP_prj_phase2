@@ -9,29 +9,29 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    home.cpp \
-    jobs.cpp \
+    Home_Tab/Home.cpp \
+    Jobs_Tab/Jobs.cpp \
+    Me_Tab/Me.cpp \
+    Messaging_Tab/Messaging.cpp \
+    MyNetwork_Tab/MyNetwork.cpp \
     main.cpp \
-    mainwindow.cpp \
-    me.cpp \
-    messaging.cpp \
-    mynetwork.cpp
+    mainwindow.cpp
 
 HEADERS += \
-    home.h \
-    jobs.h \
-    mainwindow.h \
-    me.h \
-    messaging.h \
-    mynetwork.h
+    Home_Tab/Home.h \
+    Jobs_Tab/Jobs.h \
+    Me_Tab/Me.h \
+    Messaging_Tab/Messaging.h \
+    MyNetwork_Tab/MyNetwork.h \
+    mainwindow.h
 
 FORMS += \
-    home.ui \
-    jobs.ui \
-    mainwindow.ui \
-    me.ui \
-    messaging.ui \
-    mynetwork.ui
+    Home_Tab/Home.ui \
+    Jobs_Tab/Jobs.ui \
+    Me_Tab/Me.ui \
+    Messaging_Tab/Messaging.ui \
+    MyNetwork_Tab/MyNetwork.ui \
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

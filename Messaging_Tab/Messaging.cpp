@@ -1,5 +1,5 @@
-#include "messaging.h"
-#include "ui_messaging.h"
+#include "Messaging.h"
+#include "ui_Messaging.h"
 
 Messaging::Messaging(QWidget *parent) :
     QWidget(parent),

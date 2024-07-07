@@ -1,5 +1,5 @@
-#include "jobs.h"
-#include "ui_jobs.h"
+#include "Jobs.h"
+#include "ui_Jobs.h"
 
 Jobs::Jobs(QWidget *parent) :
     QWidget(parent),

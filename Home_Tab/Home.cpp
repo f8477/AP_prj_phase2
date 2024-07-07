@@ -1,5 +1,5 @@
-#include "home.h"
-#include "ui_home.h"
+#include "Home.h"
+#include "ui_Home.h"
 
 Home::Home(QWidget *parent) :
     QWidget(parent),
