@@ -6,7 +6,6 @@
         <file>assets/myNetwork.png</file>
         <file>assets/profile.png</file>
         <file>assets/linkedin_logo.png</file>
-        <file>assets/newpost.png</file>
-    </qresource>
+        <file>assets/company.png</file>
     <qresource prefix="/new/prefix1"/>
 </RCC>
