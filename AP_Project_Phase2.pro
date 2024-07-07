@@ -14,6 +14,7 @@ SOURCES += \
     Me_Tab/Me.cpp \
     Messaging_Tab/Messaging.cpp \
     MyNetwork_Tab/MyNetwork.cpp \
+    content.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -23,6 +24,7 @@ HEADERS += \
     Me_Tab/Me.h \
     Messaging_Tab/Messaging.h \
     MyNetwork_Tab/MyNetwork.h \
+    content.h \
     mainwindow.h
 
 FORMS += \
