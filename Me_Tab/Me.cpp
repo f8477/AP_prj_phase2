@@ -15,6 +15,7 @@ Me::Me(QWidget *parent) :
     ui->BioOfUser->setReadOnly(true);
 
     ui->accountProfile->setPixmap(QPixmap(":/images/assets/profile.png"));
+    ui->companyImage->setPixmap(QPixmap(":/images/assets/company.png"));
 }
 
 Me::~Me()

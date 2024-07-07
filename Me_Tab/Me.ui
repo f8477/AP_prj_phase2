@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>450</width>
+    <width>600</width>
     <height>450</height>
    </rect>
   </property>
@@ -71,6 +71,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -83,6 +88,11 @@
      <width>100</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string/>
@@ -121,7 +131,7 @@
     <rect>
      <x>0</x>
      <y>330</y>
-     <width>450</width>
+     <width>550</width>
      <height>10</height>
     </rect>
    </property>
@@ -161,6 +171,37 @@
      <width>331</width>
      <height>61</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="companySign_Button">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>20</y>
+     <width>120</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>sign as company</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="companyImage">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>24</y>
+     <width>32</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
