@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QIcon>
+#include <QPixmap>
 
 #include "Home_Tab/Home.h"
 #include "MyNetwork_Tab/MyNetwork.h"
@@ -19,6 +20,11 @@ MainWindow::MainWindow(QWidget *parent)
     const QIcon jobs_tab(":/images/assets/jobs.png");
     const QIcon messaging_tab(":/images/assets/messaging.png");
     const QIcon me_tab(":/images/assets/profile.png");
+    const QPixmap Linkedin_logo(":/images/assets/linkedin_logo.png");
+
+    ui->Linkedin_logo->setPixmap(Linkedin_logo);
+
+    ui->search_lineEdit->setPlaceholderText("Search...");
 
     ui->originTabs->setIconSize(QSize(40, 40));
 
