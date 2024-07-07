@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QIcon>
 
 #include "Home_Tab/Home.h"
 #include "MyNetwork_Tab/MyNetwork.h"
@@ -13,11 +14,22 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    ui->originTabs->insertTab(ui->originTabs->count(), new Home(), QIcon(QString("")), "Home");
-    ui->originTabs->insertTab(ui->originTabs->count(), new MyNetwork(), QIcon(QString("")), "My Network");
-    ui->originTabs->insertTab(ui->originTabs->count(), new Jobs(), QIcon(QString("")), "Jobs");
-    ui->originTabs->insertTab(ui->originTabs->count(), new Messaging(), QIcon(QString("")), "Messaging");
-    ui->originTabs->insertTab(ui->originTabs->count(), new Me(), QIcon(QString("")), "Me");
+    const QIcon home_tab(":/images/assets/home.png");
+    const QIcon myNetwork_tab(":/images/assets/myNetwork.png");
+    const QIcon jobs_tab(":/images/assets/jobs.png");
+    const QIcon messaging_tab(":/images/assets/messaging.png");
+    const QIcon me_tab(":/images/assets/profile.png");
+
+    ui->originTabs->setIconSize(QSize(40, 40));
+
+    ui->originTabs->insertTab(ui->originTabs->count(), new Home(), home_tab, "Home");
+    ui->originTabs->insertTab(ui->originTabs->count(), new MyNetwork(), myNetwork_tab, "My Network");
+    ui->originTabs->insertTab(ui->originTabs->count(), new Jobs(), jobs_tab, "Jobs");
+    ui->originTabs->insertTab(ui->originTabs->count(), new Messaging(), messaging_tab, "Messaging");
+    ui->originTabs->insertTab(ui->originTabs->count(), new Me(), me_tab, "Me");
+    ui->originTabs->removeTab(1);
+    ui->originTabs->removeTab(0);
+
 }
 
 MainWindow::~MainWindow()
