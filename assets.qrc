@@ -17,11 +17,10 @@
         <file>assets/refresh.png</file>
         <file>assets/russia.png</file>
         <file>assets/united_states.png</file>
+        <file>project.db</file>
     </qresource>
     <qresource prefix="/new/prefix1"/>
     <qresource prefix="/database"/>
     <qresource prefix="/database" lang="En"/>
-    <qresource prefix="/">
-        <file>project.db</file>
-    </qresource>
+    <qresource prefix="/"/>
 </RCC>

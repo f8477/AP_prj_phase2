@@ -1,5 +1,5 @@
 #include "signup_login_page/signup_login.h"
-#include "ui_startwindow.h"
+#include "ui_signup_login.h"
 
 #include <QRegularExpression>
 #include <QRegularExpressionValidator>
@@ -15,12 +15,12 @@
 #include <QRandomGenerator>
 #include <QPainter>
 
-QRegularExpression username_regex, password_regex;
-QRegularExpressionValidator username_regex_val, password_regex_val;
+QRegularExpression username_regex, password_regex, email_regex, phoneNum_regex;
+QRegularExpressionValidator username_regex_val, password_regex_val, email_regex_val, phoneNum_regex_val;
 
-startWindow::startWindow(QWidget *parent)
+signup_login::signup_login(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::startWindow)
+    , ui(new Ui::signup_login)
 {
     ui->setupUi(this);
 
@@ -28,13 +28,18 @@ startWindow::startWindow(QWidget *parent)
 
     QSqlDatabase database;
     database = QSqlDatabase::addDatabase("QSQLITE");
-    database.setDatabaseName(":/project.db");
+    database.setDatabaseName("C:\\Users\\Sajjad\\Desktop\\AP Project_july 2024\\AP_prj_phase2\\project.db");
     database.open();
 
     username_regex.setPattern("\\w+");
     password_regex.setPattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&*_.]).{7,12}$");
+    email_regex.setPattern("^[a-zA-Z0-9._-]+@(gmail\\.com|email\\.com|mail\\.um\\.ac)$");
+    phoneNum_regex.setPattern("\\d+");  // just numbers is valid
     username_regex_val.setRegularExpression(username_regex);
     password_regex_val.setRegularExpression(password_regex);
+    email_regex_val.setRegularExpression(email_regex);
+    phoneNum_regex_val.setRegularExpression(phoneNum_regex);
+
 
     ui->eyeBTN->setCursor(Qt::PointingHandCursor);
     ui->eyeBTN_2->setCursor(Qt::PointingHandCursor);
@@ -78,13 +83,13 @@ startWindow::startWindow(QWidget *parent)
 
 }
 
-startWindow::~startWindow()
+signup_login::~signup_login()
 {
     delete ui;
 }
 
 
-void startWindow::on_eyeBTN_clicked()
+void signup_login::on_eyeBTN_clicked()
 {
     if(showPass)
     {
@@ -102,7 +107,7 @@ void startWindow::on_eyeBTN_clicked()
 }
 
 
-void startWindow::on_editUsername_textChanged(const QString &text)
+void signup_login::on_editUsername_textChanged(const QString &text)
 {
     int pos = 0;
     QString tmp_text = text;
@@ -121,7 +126,7 @@ void startWindow::on_editUsername_textChanged(const QString &text)
 }
 
 
-void startWindow::on_editPassword_textChanged(const QString &text)
+void signup_login::on_editPassword_textChanged(const QString &text)
 {
     int pos = 0;
     QString tmp_text = text;
@@ -139,7 +144,7 @@ void startWindow::on_editPassword_textChanged(const QString &text)
         ui->isPassCorrect->setStyleSheet("background-color: rgb(255, 44, 48);");
 }
 
-int startWindow::checkUsername(QLineEdit* lineEdit)
+int signup_login::checkUsername(QLineEdit* lineEdit)
 {
     QString username = lineEdit->text();
     int pos = 0;
@@ -153,7 +158,7 @@ int startWindow::checkUsername(QLineEdit* lineEdit)
     return 2;
 }
 
-bool startWindow::checkPassword(QLineEdit* lineEdit)
+bool signup_login::checkPassword(QLineEdit* lineEdit)
 {
     QString password = lineEdit->text();
     int pos = 0;
@@ -165,7 +170,7 @@ bool startWindow::checkPassword(QLineEdit* lineEdit)
         return true;
 }
 
-int startWindow::searchUser(QString username, QString password)
+int signup_login::searchUser(QString username, QString password)
 {
     QSqlQuery query;
     query.exec("SELECT Password FROM Person WHERE Username = '"+ username +"'");
@@ -182,7 +187,7 @@ int startWindow::searchUser(QString username, QString password)
     return -1;
 }
 
-int startWindow::checkConfrimPass()
+int signup_login::checkConfrimPass()
 {
     if(!checkPassword(ui->editPassword_2))
         return -1;
@@ -193,7 +198,7 @@ int startWindow::checkConfrimPass()
     return 1;
 }
 
-void startWindow::on_loginBTN_clicked()
+void signup_login::on_loginBTN_clicked()
 {
     switch(checkUsername(ui->editUsername))
     {
@@ -233,13 +238,13 @@ void startWindow::on_loginBTN_clicked()
 
     case 1:
         QString tmp_str2;
-        tmp_str2 = "Hello " + ui->editUsername->text();
+        tmp_str2 = "Welcome " + ui->editUsername->text();
         QMessageBox::information(this, "Welcome", tmp_str2);
-        QCoreApplication::quit();
+        QMainWindow::close();
     }
 }
 
-void startWindow::hideLoginPage()
+void signup_login::hideLoginPage()
 {
     ui->loginLBL->hide();
     ui->line_1->hide();
@@ -249,27 +254,29 @@ void startWindow::hideLoginPage()
     ui->groupBox_1->hide();
 }
 
-void startWindow::hideSignupPage()
+void signup_login::hideSignupPage()
 {
     ui->signupLBL->hide();
     ui->line_6->hide();
+    ui->emailGroup->hide();
     ui->usernameGroup_2->hide();
     ui->passwordGroup_2->hide();
     ui->phoneAndCaptchaBox->hide();
     ui->signupBTN_2->hide();
 }
 
-void startWindow::showSignupPage()
+void signup_login::showSignupPage()
 {
     ui->signupLBL->show();
     ui->line_6->show();
+    ui->emailGroup->show();
     ui->usernameGroup_2->show();
     ui->passwordGroup_2->show();
     ui->phoneAndCaptchaBox->show();
     ui->signupBTN_2->show();
 }
 
-void startWindow::showLoginPage()
+void signup_login::showLoginPage()
 {
     ui->loginLBL->show();
     ui->line_1->show();
@@ -279,14 +286,14 @@ void startWindow::showLoginPage()
     ui->groupBox_1->show();
 }
 
-void startWindow::on_signupBTN_clicked()
+void signup_login::on_signupBTN_clicked()
 {
     hideLoginPage();
     showSignupPage();
     on_refreshBTN_clicked();
 }
 
-void startWindow::on_eyeBTN_2_clicked()
+void signup_login::on_eyeBTN_2_clicked()
 {
     if(showPass_2)
     {
@@ -304,7 +311,7 @@ void startWindow::on_eyeBTN_2_clicked()
 }
 
 
-void startWindow::on_eyeBTN_3_clicked()
+void signup_login::on_eyeBTN_3_clicked()
 {
     if(showPass_3)
     {
@@ -321,7 +328,7 @@ void startWindow::on_eyeBTN_3_clicked()
     }
 }
 
-void startWindow::on_editUsername_2_textChanged(const QString &text)
+void signup_login::on_editUsername_2_textChanged(const QString &text)
 {
     int pos = 0;
     QString tmp_text = text;
@@ -340,7 +347,7 @@ void startWindow::on_editUsername_2_textChanged(const QString &text)
 }
 
 
-void startWindow::on_editPassword_2_textChanged(const QString &text)
+void signup_login::on_editPassword_2_textChanged(const QString &text)
 {
     int pos = 0;
     QString tmp_text = text;
@@ -359,7 +366,7 @@ void startWindow::on_editPassword_2_textChanged(const QString &text)
 }
 
 
-void startWindow::on_editPassword_3_textChanged(const QString &text)
+void signup_login::on_editPassword_3_textChanged(const QString &text)
 {
     int pos = 0;
     QString tmp_text = text;
@@ -377,7 +384,7 @@ void startWindow::on_editPassword_3_textChanged(const QString &text)
         ui->isPasswordCorrect_2->setStyleSheet("background-color: rgb(255, 44, 48);");
 }
 
-QString startWindow::generateRandomTxt(int len)
+QString signup_login::generateRandomTxt(int len)
 {
     QString randomTxt;
     for (int i = 0; i < len; i++)
@@ -388,7 +395,7 @@ QString startWindow::generateRandomTxt(int len)
     return randomTxt;
 }
 
-QPixmap startWindow::generateCaptchaImg(const QString &text)
+QPixmap signup_login::generateCaptchaImg(const QString &text)
 {
     QPixmap pixmap(160, 50);
     pixmap.fill(Qt::white);
@@ -402,7 +409,13 @@ QPixmap startWindow::generateCaptchaImg(const QString &text)
     return pixmap;
 }
 
-void startWindow::on_refreshBTN_clicked()
+void signup_login::closeEvent(QCloseEvent *event)
+{
+    emit signup_login_closed();
+    QMainWindow::closeEvent(event);
+}
+
+void signup_login::on_refreshBTN_clicked()
 {
     QString captchatext = generateRandomTxt(5);
     captchaCode = captchatext;
@@ -410,10 +423,11 @@ void startWindow::on_refreshBTN_clicked()
     ui->showCaptcha->setPixmap(captchaimage);
 }
 
-void startWindow::on_signupBTN_2_clicked()
+void signup_login::on_signupBTN_2_clicked()
 {
     QSqlQuery query;
     QString username = ui->editUsername_2->text();
+    QString email = ui->editEmail->text();
     QString password = ui->editPassword_2->text();
     QString phoneNum = ui->editPhoneNum->text();
 
@@ -464,7 +478,7 @@ void startWindow::on_signupBTN_2_clicked()
     else if(ui->captchaLineEdit->text() == captchaCode)
     {
         QSqlQuery tmpQuery;
-        tmpQuery.exec("INSERT INTO Person(Username, Password, Phone_Num)VALUES('"+ username +"', '"+ password +"', '"+ phoneNum +"')");
+        tmpQuery.exec("INSERT INTO Person(Username, Email, Password, Phone_Num)VALUES('"+ username +"', '"+email+"', '"+ password +"', '"+ phoneNum +"')");
         ui->editUsername_2->clear();
         ui->editPassword_2->clear();
         ui->editPassword_3->clear();
@@ -480,5 +494,21 @@ void startWindow::on_signupBTN_2_clicked()
         on_refreshBTN_clicked();
         ui->captchaLineEdit->clear();
     }
+}
+
+
+void signup_login::on_editEmail_textChanged(const QString &text)
+{
+    int pos = 0;
+    QString text_tmp = text;
+
+    if (email_regex_val.validate(text_tmp, pos) == QValidator::Acceptable)
+        ui->isEmailCorrect->setStyleSheet("background-color: rgb(0, 255, 127);");
+
+    else if (text_tmp.isEmpty())
+        ui->isEmailCorrect->setStyleSheet("background-color: rgb(255, 255, 255);");
+
+    else
+        ui->isEmailCorrect->setStyleSheet("background-color: rgb(255, 56, 56);");
 }
 

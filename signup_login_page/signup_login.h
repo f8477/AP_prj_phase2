@@ -1,20 +1,20 @@
-#ifndef STARTWINDOW_H
-#define STARTWINDOW_H
+#ifndef SIGNUP_LOGIN_H
+#define SIGNUP_LOGIN_H
 
 #include <QMainWindow>
 #include <QLineEdit>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class startWindow; }
+namespace Ui { class signup_login; }
 QT_END_NAMESPACE
 
-class startWindow : public QMainWindow
+class signup_login : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    startWindow(QWidget *parent = nullptr);
-    ~startWindow();
+    signup_login(QWidget *parent = nullptr);
+    ~signup_login();
 
 private slots:
     void on_eyeBTN_clicked();
@@ -41,8 +41,10 @@ private slots:
 
     void on_signupBTN_2_clicked();
 
+    void on_editEmail_textChanged(const QString &arg1);
+
 private:
-    Ui::startWindow *ui;
+    Ui::signup_login *ui;
     bool showPass, showPass_2, showPass_3;
     const QString dictionary = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     QString captchaCode;
@@ -56,5 +58,12 @@ private:
     int checkConfrimPass();
     QString generateRandomTxt(int);
     QPixmap generateCaptchaImg(const QString &);
+
+signals:
+    void signup_login_closed();
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
+
 };
-#endif // STARTWINDOW_H
+#endif // SIGNUP_LOGIN_H
