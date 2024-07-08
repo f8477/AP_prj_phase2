@@ -14,16 +14,12 @@ SOURCES += \
     Me_Tab/Me.cpp \
     Messaging_Tab/Messaging.cpp \
     MyNetwork_Tab/MyNetwork.cpp \
-    accountclass.cpp \
     comment.cpp \
-    company.cpp \
     content.cpp \
-    job.cpp \
     like.cpp \
     main.cpp \
     mainwindow.cpp \
     newpost.cpp \
-    person.cpp \
     post.cpp \
     signup_login_page/signup_login.cpp
 
@@ -33,15 +29,11 @@ HEADERS += \
     Me_Tab/Me.h \
     Messaging_Tab/Messaging.h \
     MyNetwork_Tab/MyNetwork.h \
-    accountclass.h \
     comment.h \
-    company.h \
     content.h \
-    job.h \
     like.h \
     mainwindow.h \
     newpost.h \
-    person.h \
     post.h \
     signup_login_page/signup_login.h
 
