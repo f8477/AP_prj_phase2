@@ -8,6 +8,20 @@
         <file>assets/linkedin_logo.png</file>
         <file>assets/company.png</file>
         <file>assets/newpost.png</file>
+        <file>assets/china.png</file>
+        <file>assets/eye.png</file>
+        <file>assets/eye-close.png</file>
+        <file>assets/germany.png</file>
+        <file>assets/iran.png</file>
+        <file>assets/iraq.png</file>
+        <file>assets/refresh.png</file>
+        <file>assets/russia.png</file>
+        <file>assets/united_states.png</file>
     </qresource>
     <qresource prefix="/new/prefix1"/>
+    <qresource prefix="/database"/>
+    <qresource prefix="/database" lang="En"/>
+    <qresource prefix="/">
+        <file>project.db</file>
+    </qresource>
 </RCC>

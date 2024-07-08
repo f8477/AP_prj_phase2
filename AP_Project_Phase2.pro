@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,7 +20,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     newpost.cpp \
-    post.cpp
+    post.cpp \
+    signup_login_page/signup_login.cpp
 
 HEADERS += \
     Home_Tab/Home.h \
@@ -33,7 +34,8 @@ HEADERS += \
     like.h \
     mainwindow.h \
     newpost.h \
-    post.h
+    post.h \
+    signup_login_page/signup_login.h
 
 FORMS += \
     Home_Tab/Home.ui \
@@ -42,7 +44,8 @@ FORMS += \
     Messaging_Tab/Messaging.ui \
     MyNetwork_Tab/MyNetwork.ui \
     mainwindow.ui \
-    newpost.ui
+    newpost.ui \
+    signup_login_page/signup_login.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
