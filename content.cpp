@@ -1,42 +1,37 @@
 #include "content.h"
 
-content::content(const QString &senderID,
-                 const QDateTime &time,
-                 const QString &text,
-                 const QImage &image)
-        : senderID(senderID),
-          time(time),
-          text(text),
-          image(image){}
+Content::Content(const std::string &senderID,
+                 const Time &timeSent,
+                 const std::string &contentText)
+    : senderID(senderID), timeSent(timeSent), contentText(contentText) {}
 
-QString content::getSender() const {
+std::string Content::getSenderID() const {
     return senderID;
 }
 
-void content::setSender(const QString &senderID) {
+void Content::setSenderID(const std::string &senderID) {
     this->senderID = senderID;
 }
 
-QDateTime content::getTime() const {
-    return time;
+Time Content::getTimeSent() const {
+    return timeSent;
 }
 
-void content::setTime(const QDateTime &time) {
-    this->time = time;
+void Content::setTimeSent(const Time &timeSent) {
+    this->timeSent = timeSent;
 }
 
-QString content::getText() const {
-    return text;
+std::string Content::getContentText() const {
+    return contentText;
 }
 
-void content::setText(const QString &text) {
-    this->text = text;
+void Content::setContentText(const std::string &contentText) {
+    this->contentText = contentText;
 }
 
-QImage content::getImage() const {
-    return image;
-}
-
-void content::setImage(const QImage &image) {
-    this->image = image;
-}
+//std::ostream& operator<<(std::ostream &out, const Content &contentInstance) {
+//    out << "Sender ID: " << contentInstance.senderID << std::endl;
+//    out << "Time Sent: " << contentInstance.timeSent << std::endl;
+//    out << "Content Text: " << contentInstance.contentText << std::endl;
+//    return out;
+//}

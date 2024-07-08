@@ -1,48 +1,57 @@
 #include "post.h"
 
-Post::Post(const QString &senderID,
-           const QDateTime &time,
-           const QString &text,
-           const QImage &image,
-           int postID)
-    : content(senderID, time, text, image), postID(postID), repostCount(0) {}
+Post::Post(const std::string &postId,
+           const std::string &senderID,
+           const Time &timeSent,
+           const std::string &contentText)
+    : Content(senderID, timeSent, contentText), postIdentifier(postId), repostCounter(0) {}
 
-int Post::getPostID() const {
-    return postID;
+std::string Post::getPostId() const {
+    return postIdentifier;
 }
 
-void Post::setPostID(int postID) {
-    this->postID = postID;
+void Post::setPostId(const std::string &postId) {
+    postIdentifier = postId;
 }
 
-QVector<Like*> Post::getLikes() const {
+int Post::getRepostCounter() const {
+    return repostCounter;
+}
+
+void Post::incrementRepostCounter() {
+    repostCounter++;
+}
+
+void Post::addLike(const Like &like) {
+    likes.push_back(like);
+}
+
+void Post::removeLike(const std::string &likeId) {
+    for (auto it = likes.begin(); it != likes.end(); ++it) {
+        if (it->getLikeId() == likeId) {
+            likes.erase(it);
+            break;
+        }
+    }
+}
+
+void Post::addComment(const Comment &comment) {
+    comments.push_back(comment);
+}
+
+void Post::removeComment(const std::string &commentId) {
+    for (auto it = comments.begin(); it != comments.end(); ++it) {
+        if (it->getCommentId() == commentId) {
+            comments.erase(it);
+            break;
+        }
+    }
+}
+
+std::vector<Like> Post::getLikes() const {
     return likes;
 }
 
-void Post::addLike(Like* like) {
-    likes.append(like);
-}
-
-void Post::removeLike(int index) {
-    likes.removeAt(index);
-}
-
-QVector<Comment*> Post::getComments() const {
+std::vector<Comment> Post::getComments() const {
     return comments;
-}
-
-void Post::addComment(Comment* comment) {
-    comments.append(comment);
-}
-
-void Post::removeComment(int index) {
-    comments.removeAt(index);
-}
-
-int Post::getRepostCount() const {
-    return repostCount;
-}
-
-void Post::incrementRepostCount() {
-    repostCount++;
 }

@@ -1,26 +1,26 @@
 #ifndef COMMENT_H
 #define COMMENT_H
 
-#include <QString>
-#include <QDateTime>
+#include <string>
+#include "content.h"
 
-class Comment {
+class Comment : public Content {
 public:
-    Comment(const QString &userID, const QString &text, const QDateTime &time);
+    Comment(const std::string &postId,
+            const std::string &commentId,
+            const std::string &senderID,
+            const Time &timeSent,
+            const std::string &contentText);
 
-    QString getUserID() const;
-    void setUserID(const QString &userID);
+    std::string getPostId() const;
+    void setPostId(const std::string &postId);
 
-    QString getText() const;
-    void setText(const QString &text);
-
-    QDateTime getTime() const;
-    void setTime(const QDateTime &time);
+    std::string getCommentId() const;
+    void setCommentId(const std::string &commentId);
 
 private:
-    QString userID;
-    QString text;
-    QDateTime time;
+    std::string postIdentifier;
+    std::string commentIdentifier;
 };
 
 #endif // COMMENT_H

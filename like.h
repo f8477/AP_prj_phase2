@@ -1,17 +1,26 @@
 #ifndef LIKE_H
 #define LIKE_H
 
-#include <QString>
+#include "timee.h"
+#include <string>
 
 class Like {
 public:
-    Like(const QString &userID);
+    Like(const std::string &whoLikeId, const std::string &likeId, const Time &time);
 
-    QString getUserID() const;
-    void setUserID(const QString &userID);
+    std::string getWhoLikeId() const;
+    void setWhoLikeId(const std::string &whoLikeId);
+
+    std::string getLikeId() const;
+    void setLikeId(const std::string &likeId);
+
+    Time getTime() const;
+    void setTime(const Time &time);
 
 private:
-    QString userID;
+    std::string who_like_id;
+    std::string like_id;
+    Time time;
 };
 
 #endif // LIKE_H

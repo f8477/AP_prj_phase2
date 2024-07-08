@@ -1,38 +1,39 @@
 #ifndef POST_H
 #define POST_H
 
+#include <string>
+#include <vector>
 #include "content.h"
 #include "like.h"
 #include "comment.h"
-#include <QVector>
 
-class Post : public content {
+class Post : public Content {
 public:
-    Post(const QString &senderID,
-         const QDateTime &time,
-         const QString &text,
-         const QImage &image,
-         int postID);
+    Post(const std::string &postId,
+         const std::string &senderID,
+         const Time &timeSent,
+         const std::string &contentText);
 
-    int getPostID() const;
-    void setPostID(int postID);
+    std::string getPostId() const;
+    void setPostId(const std::string &postId);
 
-    QVector<Like*> getLikes() const;
-    void addLike(Like* like);
-    void removeLike(int index);
+    int getRepostCounter() const;
+    void incrementRepostCounter();
 
-    QVector<Comment*> getComments() const;
-    void addComment(Comment* comment);
-    void removeComment(int index);
+    void addLike(const Like &like);
+    void removeLike(const std::string &likeId);
 
-    int getRepostCount() const;
-    void incrementRepostCount();
+    void addComment(const Comment &comment);
+    void removeComment(const std::string &commentId);
+
+    std::vector<Like> getLikes() const;
+    std::vector<Comment> getComments() const;
 
 private:
-    int postID;
-    QVector<Like*> likes;
-    QVector<Comment*> comments;
-    int repostCount;
+    std::string postIdentifier;
+    int repostCounter;
+    std::vector<Like> likes;
+    std::vector<Comment> comments;
 };
 
 #endif // POST_H

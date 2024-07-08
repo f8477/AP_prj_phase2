@@ -2,33 +2,27 @@
 #define CONTENT_H
 
 #include <QString>
-#include <QDateTime>
-#include <QImage>
+#include "timee.h" // Include Timee header
 
-class content{
+class Content {
 public:
-    content(const QString &senderID,
-            const QDateTime &time,
-            const QString &text,
-            const QImage &image);
+    Content(const std::string &senderID,
+            const Time &timeSent,
+            const std::string &contentText);
 
-    QString getSender() const;
-    void setSender(const QString &senderID);
+    std::string getSenderID() const;
+    void setSenderID(const std::string &senderID);
 
-    QDateTime getTime() const;
-    void setTime(const QDateTime &time);
+    Time getTimeSent() const;
+    void setTimeSent(const Time &timeSent);
 
-    QString getText() const;
-    void setText(const QString &text);
-
-    QImage getImage() const;
-    void setImage(const QImage &image);
+    std::string getContentText() const;
+    void setContentText(const std::string &contentText);
 
 private:
-    QString senderID;
-    QDateTime time;
-    QString text;
-    QImage image;
+    std::string senderID;
+    Time timeSent;
+    std::string contentText;
 };
 
 #endif // CONTENT_H

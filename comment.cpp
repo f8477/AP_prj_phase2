@@ -1,28 +1,26 @@
 #include "comment.h"
 
-Comment::Comment(const QString &userID, const QString &text, const QDateTime &time)
-    : userID(userID), text(text), time(time) {}
+Comment::Comment(const std::string &postId,
+                 const std::string &commentId,
+                 const std::string &senderID,
+                 const Time &timeSent,
+                 const std::string &contentText)
+    : Content(senderID, timeSent, contentText),
+      postIdentifier(postId),
+      commentIdentifier(commentId) {}
 
-QString Comment::getUserID() const {
-    return userID;
+std::string Comment::getPostId() const {
+    return postIdentifier;
 }
 
-void Comment::setUserID(const QString &userID) {
-    this->userID = userID;
+void Comment::setPostId(const std::string &postId) {
+    postIdentifier = postId;
 }
 
-QString Comment::getText() const {
-    return text;
+std::string Comment::getCommentId() const {
+    return commentIdentifier;
 }
 
-void Comment::setText(const QString &text) {
-    this->text = text;
-}
-
-QDateTime Comment::getTime() const {
-    return time;
-}
-
-void Comment::setTime(const QDateTime &time) {
-    this->time = time;
+void Comment::setCommentId(const std::string &commentId) {
+    commentIdentifier = commentId;
 }

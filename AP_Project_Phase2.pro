@@ -21,7 +21,8 @@ SOURCES += \
     mainwindow.cpp \
     newpost.cpp \
     post.cpp \
-    signup_login_page/signup_login.cpp
+    signup_login_page/signup_login.cpp \
+    timee.cpp
 
 HEADERS += \
     Home_Tab/Home.h \
@@ -35,7 +36,8 @@ HEADERS += \
     mainwindow.h \
     newpost.h \
     post.h \
-    signup_login_page/signup_login.h
+    signup_login_page/signup_login.h \
+    timee.h
 
 FORMS += \
     Home_Tab/Home.ui \
