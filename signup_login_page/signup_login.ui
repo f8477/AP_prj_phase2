@@ -888,9 +888,6 @@ color: rgb(255, 255, 255);</string>
        <pointsize>10</pointsize>
       </font>
      </property>
-     <property name="maxLength">
-      <number>20</number>
-     </property>
      <property name="frame">
       <bool>false</bool>
      </property>
