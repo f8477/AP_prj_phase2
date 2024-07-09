@@ -15,6 +15,14 @@ public:
     explicit Messaging(QWidget *parent = nullptr);
     ~Messaging();
 
+private slots:
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+
+    void on_pushButton_3_clicked();
+
 private:
     Ui::Messaging *ui;
 };
