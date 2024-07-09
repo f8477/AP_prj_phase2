@@ -46,8 +46,7 @@ void Home::on_pushButton_clicked()
     }
     newpostWindow->show();
 }
-
-
+int i = 1;
 void Home::on_pushButton_8_clicked()
 {
     QString useid = User::getInstance().getUsername();
@@ -57,8 +56,8 @@ void Home::on_pushButton_8_clicked()
     QSqlQuery q;
 
     if (q.exec("SELECT * FROM Post")) {
-            int i = 1;
             q.last();
+            i = 1;
             while (q.isValid() && i <= 5) {
                 QString username = q.value("Sender_ID").toString();
                 QString text = q.value("Content_Text").toString();
@@ -69,9 +68,16 @@ void Home::on_pushButton_8_clicked()
                 }else if (i == 2){
                     ui->label_29->setText(username);
                     ui->textEdit_8->setText(text);
+                }else if (i == 3){
+                    ui->label_10->setText(username);
+                    ui->textEdit_4->setText(text);
+                }else if (i == 4){
+                    ui->label_12->setText(username);
+                    ui->textEdit_5->setText(text);
+                }else if (i == 5){
+                    ui->label_14->setText(username);
+                    ui->textEdit_6->setText(text);
                 }
-
-
                 i++;
                 q.previous();
             }
@@ -79,9 +85,100 @@ void Home::on_pushButton_8_clicked()
 //            qDebug() << "Error: " << query.lastError().text();
         }
 
+}
 
 
 
+void Home::on_pushButton_4_clicked()
+{
+    QSqlQuery q;
+    q.exec("SELECT * FROM Post");
+    q.last();
 
+
+    while (i && q.isValid()){
+        i--;
+        q.previous();
+    }
+    i = 1;
+    while (q.isValid() && i <= 5) {
+        QString username = q.value("Sender_ID").toString();
+        QString text = q.value("Content_Text").toString();
+
+        if (i == 1){
+            ui->label_6->setText(username);
+            ui->textEdit_2->setText(text);
+        }else if (i == 2){
+            ui->label_29->setText(username);
+            ui->textEdit_8->setText(text);
+        }else if (i == 3){
+            ui->label_10->setText(username);
+            ui->textEdit_4->setText(text);
+        }else if (i == 4){
+            ui->label_12->setText(username);
+            ui->textEdit_5->setText(text);
+        }else if (i == 5){
+            ui->label_14->setText(username);
+            ui->textEdit_6->setText(text);
+        }
+        i++;
+        q.previous();
+    }
+}
+
+
+void Home::on_pushButton_23_clicked()
+{
+    QString useid = User::getInstance().getUsername();
+    QString text = ui->textEdit_2->toPlainText();
+
+    QSqlQuery q;
+    q.exec("INSERT INTO Post(Content_Text, Sender_ID)VALUES('"+text+"', '"+useid+"')");
+    QMessageBox::information(this, "Repost", "Repost successfuly");
+
+}
+
+
+void Home::on_pushButton_35_clicked()
+{
+    QString useid = User::getInstance().getUsername();
+    QString text = ui->textEdit_8->toPlainText();
+
+    QSqlQuery q;
+    q.exec("INSERT INTO Post(Content_Text, Sender_ID)VALUES('"+text+"', '"+useid+"')");
+    QMessageBox::information(this, "Repost", "Repost successfuly");
+}
+
+
+void Home::on_pushButton_37_clicked()
+{
+    QString useid = User::getInstance().getUsername();
+    QString text = ui->textEdit_4->toPlainText();
+
+    QSqlQuery q;
+    q.exec("INSERT INTO Post(Content_Text, Sender_ID)VALUES('"+text+"', '"+useid+"')");
+    QMessageBox::information(this, "Repost", "Repost successfuly");
+}
+
+
+void Home::on_pushButton_39_clicked()
+{
+    QString useid = User::getInstance().getUsername();
+    QString text = ui->textEdit_5->toPlainText();
+
+    QSqlQuery q;
+    q.exec("INSERT INTO Post(Content_Text, Sender_ID)VALUES('"+text+"', '"+useid+"')");
+    QMessageBox::information(this, "Repost", "Repost successfuly");
+}
+
+
+void Home::on_pushButton_41_clicked()
+{
+    QString useid = User::getInstance().getUsername();
+    QString text = ui->textEdit_6->toPlainText();
+
+    QSqlQuery q;
+    q.exec("INSERT INTO Post(Content_Text, Sender_ID)VALUES('"+text+"', '"+useid+"')");
+    QMessageBox::information(this, "Repost", "Repost successfuly");
 }
 

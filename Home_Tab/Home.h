@@ -24,6 +24,18 @@ private slots:
 
     void on_pushButton_8_clicked();
 
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_23_clicked();
+
+    void on_pushButton_35_clicked();
+
+    void on_pushButton_37_clicked();
+
+    void on_pushButton_39_clicked();
+
+    void on_pushButton_41_clicked();
+
 private:
     Ui::Home *ui;
     newpost *newpostWindow;
