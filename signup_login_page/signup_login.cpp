@@ -1,5 +1,6 @@
 #include "signup_login_page/signup_login.h"
 #include "ui_signup_login.h"
+#include "account.h"
 
 #include <QRegularExpression>
 #include <QRegularExpressionValidator>
@@ -28,7 +29,7 @@ signup_login::signup_login(QWidget *parent)
 
     QSqlDatabase database;
     database = QSqlDatabase::addDatabase("QSQLITE");
-    database.setDatabaseName("C:\\Users\\Sajjad\\Desktop\\AP Project_july 2024\\AP_prj_phase2\\project.db");
+    database.setDatabaseName("F:\\coding\\Projects\\AP_prj_phase2\\project.db");
     database.open();
 
     username_regex.setPattern("\\w+");
@@ -238,6 +239,9 @@ void signup_login::on_loginBTN_clicked()
 
     case 1:
         QString tmp_str2;
+        QString user_name = ui->editUsername->text();
+//        &user_name = *user_namee;
+        User::getInstance().setUsername(user_name);
         tmp_str2 = "Welcome " + ui->editUsername->text();
         QMessageBox::information(this, "Welcome", tmp_str2);
         QMainWindow::close();

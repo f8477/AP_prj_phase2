@@ -253,6 +253,9 @@ font: 18pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_20">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -269,6 +272,9 @@ font: 18pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <property name="text">
      <string>your user name</string>
+    </property>
+    <property name="textInteractionFlags">
+     <set>Qt::LinksAccessibleByMouse|Qt::TextEditable</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_21">
@@ -1180,6 +1186,19 @@ font: 18pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
     </widget>
    </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton_8">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>470</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
   </widget>
  </widget>
  <resources/>

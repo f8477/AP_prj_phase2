@@ -2,9 +2,10 @@
 #define HOME_H
 
 #include <QWidget>
+#include <QDialog>
 #include "newpost.h"
-
-
+#include <QMainWindow>
+#include <QLineEdit>
 
 namespace Ui {
 class Home;
@@ -20,6 +21,8 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+
+    void on_pushButton_8_clicked();
 
 private:
     Ui::Home *ui;

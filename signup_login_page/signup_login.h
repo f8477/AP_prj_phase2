@@ -3,10 +3,15 @@
 
 #include <QMainWindow>
 #include <QLineEdit>
+#include <QString>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class signup_login; }
 QT_END_NAMESPACE
+
+
+
+//QString user_name;
 
 class signup_login : public QMainWindow
 {

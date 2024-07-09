@@ -7,11 +7,11 @@ Me::Me(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->nameOfUser->setText("Sajjad");
-    ui->lastnameOfUser->setText("Rahimi Shandiz");
+    ui->nameOfUser->setText("Fatemeh");
+    ui->lastnameOfUser->setText("Arabkhani");
     ui->skillsOfUser->setPlainText("software engineer");
     ui->skillsOfUser->setReadOnly(true);
-    ui->BioOfUser->setPlainText("EE Student at FUM | Electronic Designer | Linux Lover \nLove swim and trip");
+    ui->BioOfUser->setPlainText("CE Student at FUM | Linux Lover \nLove swim and trip");
     ui->BioOfUser->setReadOnly(true);
 
     ui->accountProfile->setPixmap(QPixmap(":/images/assets/profile.png"));
@@ -22,3 +22,5 @@ Me::~Me()
 {
     delete ui;
 }
+
+

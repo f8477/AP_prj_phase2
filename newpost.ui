@@ -42,34 +42,6 @@
     <string>Cancel</string>
    </property>
   </widget>
-  <widget class="QTextBrowser" name="textBrowser">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>370</y>
-     <width>661</width>
-     <height>111</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::Box</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <property name="overwriteMode">
-    <bool>false</bool>
-   </property>
-   <property name="textInteractionFlags">
-    <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextSelectableByMouse</set>
-   </property>
-   <property name="placeholderText">
-    <string>What do you want to talk about?...</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -103,6 +75,22 @@
    </property>
    <property name="text">
     <string>Select File</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>370</y>
+     <width>661</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="placeholderText">
+    <string>What do you want t talk about?...</string>
    </property>
   </widget>
  </widget>

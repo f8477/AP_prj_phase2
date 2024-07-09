@@ -14,6 +14,7 @@ SOURCES += \
     Me_Tab/Me.cpp \
     Messaging_Tab/Messaging.cpp \
     MyNetwork_Tab/MyNetwork.cpp \
+    account.cpp \
     comment.cpp \
     content.cpp \
     like.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     Me_Tab/Me.h \
     Messaging_Tab/Messaging.h \
     MyNetwork_Tab/MyNetwork.h \
+    account.h \
     comment.h \
     content.h \
     like.h \
