@@ -36,6 +36,8 @@ private slots:
 
     void on_pushButton_41_clicked();
 
+    void on_pushButton_25_clicked();
+
 private:
     Ui::Home *ui;
     newpost *newpostWindow;

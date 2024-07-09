@@ -1,6 +1,7 @@
 #include "Messaging.h"
 #include "ui_Messaging.h"
 #include "account.h"
+#include "directmessage.h"
 #include <QString>
 #include <QMessageBox>
 #include <QStringList>

@@ -17,11 +17,14 @@ SOURCES += \
     account.cpp \
     comment.cpp \
     content.cpp \
+    directmessage.cpp \
     like.cpp \
     main.cpp \
     mainwindow.cpp \
     newpost.cpp \
     post.cpp \
+    profileedit.cpp \
+    sendpost.cpp \
     signup_login_page/signup_login.cpp \
     timee.cpp
 
@@ -34,10 +37,13 @@ HEADERS += \
     account.h \
     comment.h \
     content.h \
+    directmessage.h \
     like.h \
     mainwindow.h \
     newpost.h \
     post.h \
+    profileedit.h \
+    sendpost.h \
     signup_login_page/signup_login.h \
     timee.h
 
@@ -49,6 +55,8 @@ FORMS += \
     MyNetwork_Tab/MyNetwork.ui \
     mainwindow.ui \
     newpost.ui \
+    profileedit.ui \
+    sendpost.ui \
     signup_login_page/signup_login.ui
 
 # Default rules for deployment.

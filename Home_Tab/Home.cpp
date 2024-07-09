@@ -1,6 +1,7 @@
 #include "Home.h"
 #include "ui_Home.h"
 #include "account.h"
+#include "directmessage.h"
 #include <QFont>
 #include <QString>
 #include <QMessageBox>
@@ -84,6 +85,24 @@ void Home::on_pushButton_8_clicked()
         } else {
 //            qDebug() << "Error: " << query.lastError().text();
         }
+
+    q.exec("SELECT * FROM Person");
+    q.last();
+    int j = 1;
+    while (q.isValid() && j <= 2){
+        QString username = q.value("Username").toString();
+        if (username != useid){
+            if (j == 1){
+                ui->label_4->setText(username);
+
+            }else if (j == 2){
+                ui->label_16->setText(username);
+
+            }
+            j++;
+        }
+        q.previous();
+    }
 
 }
 
@@ -180,5 +199,11 @@ void Home::on_pushButton_41_clicked()
     QSqlQuery q;
     q.exec("INSERT INTO Post(Content_Text, Sender_ID)VALUES('"+text+"', '"+useid+"')");
     QMessageBox::information(this, "Repost", "Repost successfuly");
+}
+
+
+void Home::on_pushButton_25_clicked()
+{
+
 }
 
