@@ -29,7 +29,7 @@ signup_login::signup_login(QWidget *parent)
 
     QSqlDatabase database;
     database = QSqlDatabase::addDatabase("QSQLITE");
-    database.setDatabaseName("F:\\coding\\Projects\\AP_prj_phase2\\project.db");
+    database.setDatabaseName("C:\\Users\\Sajjad\\Desktop\\AP Project_july 2024\\AP_prj_phase2\\project.db");
     database.open();
 
     username_regex.setPattern("\\w+");

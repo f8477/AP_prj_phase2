@@ -15,13 +15,17 @@ SOURCES += \
     Messaging_Tab/Messaging.cpp \
     MyNetwork_Tab/MyNetwork.cpp \
     account.cpp \
+    accountClass.cpp \
     comment.cpp \
+    company.cpp \
     content.cpp \
     directmessage.cpp \
+    job.cpp \
     like.cpp \
     main.cpp \
     mainwindow.cpp \
     newpost.cpp \
+    person.cpp \
     post.cpp \
     profileedit.cpp \
     sendpost.cpp \
@@ -35,12 +39,16 @@ HEADERS += \
     Messaging_Tab/Messaging.h \
     MyNetwork_Tab/MyNetwork.h \
     account.h \
+    accountClass.h \
     comment.h \
+    company.h \
     content.h \
     directmessage.h \
+    job.h \
     like.h \
     mainwindow.h \
     newpost.h \
+    person.h \
     post.h \
     profileedit.h \
     sendpost.h \
