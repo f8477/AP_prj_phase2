@@ -5,6 +5,9 @@
 #include "profileedit.h"
 #include "companysignup.h"
 
+#include <QWidget>
+#include <QTextEdit>
+#include <QSqlDatabase>
 namespace Ui {
 class Me;
 }
@@ -27,6 +30,11 @@ private slots:
 private:
     Ui::Me *ui;
     ProfileEdit *profile_edit;
+    QTextEdit *nameEdit;
+    QTextEdit *lastNameEdit;
+    QTextEdit *emailEdit;
+    bool openDatabase(QSqlDatabase &db);
+    void loadPersonInfo();
 };
 
 #endif // ME_H

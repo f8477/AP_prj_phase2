@@ -148,7 +148,7 @@
     <string>Last name :</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="lastname">
+  <widget class="QTextEdit" name="lastnamee">
    <property name="enabled">
     <bool>false</bool>
    </property>

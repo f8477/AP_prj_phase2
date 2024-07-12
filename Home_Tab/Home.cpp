@@ -10,8 +10,12 @@
 #include <QSqlDriver>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
-
-
+#include "account.h"
+#include <QVBoxLayout>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QVariant>
+#include <QDebug>
 
 Home::Home(QWidget *parent) :
     QWidget(parent),
@@ -23,7 +27,7 @@ Home::Home(QWidget *parent) :
 
     QSqlDatabase database;
     database = QSqlDatabase::addDatabase("QSQLITE");
-    database.setDatabaseName("C:\\Users\\Sajjad\\Desktop\\AP Project_july 2024\\AP_prj_phase2\\project.db");
+    database.setDatabaseName("F:\\coding\\Projects\\AP_prj_phase2\\project.db");
     database.open();
 
 
@@ -102,6 +106,24 @@ void Home::on_pushButton_8_clicked()
             j++;
         }
         q.previous();
+    }
+//    QString useid = User::getInstance().getUsername();
+
+    QSqlQuery query;
+    query.prepare("SELECT Skills FROM Person WHERE Username = '"+ useid +"'");
+
+    if (!query.exec()) {
+        qWarning() << "Error: query execution failed -" << query.lastError();
+//            db.close();
+        return;
+    }
+
+    if (query.next()) {
+
+        QString skills = query.value("Skills").toString();
+        ui->textEdit->setText(skills);
+    } else {
+        qWarning() << "No data found";
     }
 
 }

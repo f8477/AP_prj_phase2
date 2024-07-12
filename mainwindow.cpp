@@ -8,10 +8,23 @@
 #include "Jobs_Tab/Jobs.h"
 #include "Messaging_Tab/Messaging.h"
 #include "Me_Tab/Me.h"
+#include <QString>
+#include "account.h"
+#include <QSqlDatabase>
+#include <QSqlDriver>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
+#include <QMessageBox>
+
+
+
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow),
+      ViewP(nullptr)
+
 {
     ui->setupUi(this);
 
@@ -36,10 +49,36 @@ MainWindow::MainWindow(QWidget *parent)
     ui->originTabs->removeTab(1);
     ui->originTabs->removeTab(0);
 
+    QSqlDatabase database;
+    database = QSqlDatabase::addDatabase("QSQLITE");
+    database.setDatabaseName("F:\\coding\\Projects\\AP_prj_phase2\\project.db");
+    database.open();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    if (ViewP) {
+            delete ViewP;
+    }
+}
+
+
+void MainWindow::on_Search_button_clicked()
+{
+    QString Uid = ui->search_lineEdit->text();
+    //    GlobalUser::getInstance().setUsername("Sarah11");
+
+    QSqlQuery q;
+    q.exec("SELECT Username FROM Person WHERE Username = '"+Uid+"'");
+    if (!q.first()){
+        QMessageBox::warning(this, "Error", "this account not found!");
+    }
+    GlobalUser::getInstance().setUsername("Sarah11");
+
+    if (!ViewP) {
+       ViewP = new veiwperson(this);
+    }
+    ViewP->show();
 }
 

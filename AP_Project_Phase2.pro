@@ -31,7 +31,8 @@ SOURCES += \
     profileedit.cpp \
     sendpost.cpp \
     signup_login_page/signup_login.cpp \
-    timee.cpp
+    timee.cpp \
+    veiwperson.cpp
 
 HEADERS += \
     Home_Tab/Home.h \
@@ -55,7 +56,8 @@ HEADERS += \
     profileedit.h \
     sendpost.h \
     signup_login_page/signup_login.h \
-    timee.h
+    timee.h \
+    veiwperson.h
 
 FORMS += \
     Home_Tab/Home.ui \
@@ -68,7 +70,8 @@ FORMS += \
     newpost.ui \
     profileedit.ui \
     sendpost.ui \
-    signup_login_page/signup_login.ui
+    signup_login_page/signup_login.ui \
+    veiwperson.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
