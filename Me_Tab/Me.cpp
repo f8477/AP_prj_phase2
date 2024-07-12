@@ -61,9 +61,6 @@ void Me::on_companySign_Button_3_clicked()
     QString email = q.value("Email").toString();
     QString bio = q.value("Bio").toString();
 
-
-
-
     ui->namee->setText(name);
     ui->lastname->setText(lastname);
     ui->skills->setText(skills);
@@ -72,5 +69,15 @@ void Me::on_companySign_Button_3_clicked()
     ui->email->setText(email);
     ui->bio->setText(bio);
     ui->username->setText(useid);
+}
+
+
+void Me::on_companySign_Button_clicked()
+{
+    CompanySignup companySignup(this);
+    if(companySignup.exec() == QDialog::Accepted)
+    {
+        companySignup.clickForSignup();
+    }
 }
 

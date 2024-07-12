@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "profileedit.h"
+#include "companysignup.h"
 
 namespace Ui {
 class Me;
@@ -20,6 +21,8 @@ private slots:
     void on_companySign_Button_2_clicked();
 
     void on_companySign_Button_3_clicked();
+
+    void on_companySign_Button_clicked();
 
 private:
     Ui::Me *ui;
