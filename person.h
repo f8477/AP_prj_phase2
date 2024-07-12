@@ -22,16 +22,16 @@ public:
     Person(const string &username, const string &phone, const string &email, const string &name, const string &lastname);
 
     // Getters
-    string getName() const;
-    string getLastName() const;
-    string getSkills() const;
+    string getName(const QString Uid) ;
+    string getLastName(const QString Uid);
+    string getSkills(const QString Uid) ;
     Job getJob() const;
 
     // Setters
-    void setName(const string &name);
-    void setLastName(const string &lastname);
-    void setSkills(const string &skills);
-    void addSkill(const string &skill);
+    void setName(const string &name, const QString Uid);
+    void setLastName(const string &lastname, const QString Uid);
+    void setSkills(const string &skills, const QString Uid);
+    void addSkill(const string &skill, const QString Uid);
     void take_job(Job &job);
 };
 

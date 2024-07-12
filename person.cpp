@@ -1,4 +1,9 @@
 #include "person.h"
+#include "account.h"
+#include <QSqlDatabase>
+#include <QSqlDriver>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
 
 // Constructor
 
@@ -8,18 +13,42 @@ Person::Person(const string &username, const string &phone, const string &email,
     : Account(username, phone, email), Name(name), Lastname(lastname) {}
 
 // Getters
-string Person::getName() const
+string Person::getName(const QString Uid)
 {
+    QSqlDatabase database;
+    database = QSqlDatabase::addDatabase("QSQLITE");
+    database.setDatabaseName("F:\\coding\\Projects\\AP_prj_phase2\\project.db");
+    database.open();
+    QSqlQuery q;
+    q.exec("SELECT * FROM Person WHERE Username = '"+ Uid +"'");
+    QString N = q.value("Name").toString();
+    Name = N.toStdString();
     return Name;
 }
 
-string Person::getLastName() const
+string Person::getLastName(const QString Uid)
 {
+    QSqlDatabase database;
+    database = QSqlDatabase::addDatabase("QSQLITE");
+    database.setDatabaseName("F:\\coding\\Projects\\AP_prj_phase2\\project.db");
+    database.open();
+    QSqlQuery q;
+    q.exec("SELECT * FROM Person WHERE Username = '"+ Uid +"'");
+    QString N = q.value("LastName").toString();
+    Lastname = N.toStdString();
     return Lastname;
 }
 
-string Person::getSkills() const
+string Person::getSkills(const QString Uid)
 {
+    QSqlDatabase database;
+    database = QSqlDatabase::addDatabase("QSQLITE");
+    database.setDatabaseName("F:\\coding\\Projects\\AP_prj_phase2\\project.db");
+    database.open();
+    QSqlQuery q;
+    q.exec("SELECT * FROM Person WHERE Username = '"+ Uid +"'");
+    QString N = q.value("Skills").toString();
+    Skills = N.toStdString();
     return Skills;
 }
 
@@ -30,24 +59,55 @@ Job Person::getJob() const
 
 
 // Setters
-void Person::setName(const string &name)
+void Person::setName(const string &name, const QString Uid)
 {
+    QSqlDatabase database;
+    database = QSqlDatabase::addDatabase("QSQLITE");
+    database.setDatabaseName("F:\\coding\\Projects\\AP_prj_phase2\\project.db");
+    database.open();
+    QSqlQuery q;
+    QString N = QString::fromStdString(name);
+    q.exec("UPDATE Person SET Name = '"+N+"' WHERE Username = '"+Uid+"' ");
     Name = name;
 }
 
-void Person::setLastName(const string &lastname)
+void Person::setLastName(const string &lastname, const QString Uid)
 {
+    QSqlDatabase database;
+    database = QSqlDatabase::addDatabase("QSQLITE");
+    database.setDatabaseName("F:\\coding\\Projects\\AP_prj_phase2\\project.db");
+    database.open();
+    QSqlQuery q;
+    QString N = QString::fromStdString(lastname);
+    q.exec("UPDATE Person SET LastName = '"+N+"' WHERE Username = '"+Uid+"' ");
     Lastname = lastname;
 }
 
-void Person::setSkills(const string &skills)
+void Person::setSkills(const string &skills, const QString Uid)
 {
+    QSqlDatabase database;
+    database = QSqlDatabase::addDatabase("QSQLITE");
+    database.setDatabaseName("F:\\coding\\Projects\\AP_prj_phase2\\project.db");
+    database.open();
+    QSqlQuery q;
+    QString N = QString::fromStdString(skills);
+    q.exec("UPDATE Person SET Skills = '"+N+"' WHERE Username = '"+Uid+"' ");
     Skills = skills;
 }
 
-void Person::addSkill(const string &skill)
+void Person::addSkill(const string &skill, const QString Uid)
 {
+
+
+    Skills = getSkills(Uid);
     Skills += skill;
+    QSqlDatabase database;
+    database = QSqlDatabase::addDatabase("QSQLITE");
+    database.setDatabaseName("F:\\coding\\Projects\\AP_prj_phase2\\project.db");
+    database.open();
+    QSqlQuery q;
+    QString N = QString::fromStdString(Skills);
+    q.exec("UPDATE Person SET Skills = '"+N+"' WHERE Username = '"+Uid+"' ");
 }
 
 void Person::take_job(Job &job)

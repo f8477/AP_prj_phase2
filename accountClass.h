@@ -27,15 +27,15 @@ public:
     Account(const string &username, const string &phone, const string &email);
 
     // Getters
-    string getUsername() const;
-    string getPhone_Num() const;
-    string getEmail() const;
-    vector<string> getPersonConnectionID() const;
-    vector<string> getPersonFollowingID() const;
-    vector<string> getCompanyConnectionID() const;
-    vector<string> getCompanyFollowingID() const;
-    vector<Post> getPosts() const;
-    vector<DirectMessage> getDM() const;
+    string getUsername() ;
+    string getPhone_Num() ;
+    string getEmail(const QString Uid) ;
+    vector<string> getPersonConnectionID() ;
+    vector<string> getPersonFollowingID() ;
+    vector<string> getCompanyConnectionID() ;
+    vector<string> getCompanyFollowingID() ;
+    vector<Post> getPosts() ;
+    vector<DirectMessage> getDM() ;
 
     // Setters
     void setUsername(const string &username);
