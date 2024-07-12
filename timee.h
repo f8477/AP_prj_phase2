@@ -4,6 +4,8 @@
 #include <iostream>
 #include <QString>
 
+
+
 class Time {
 public:
     Time(int initYear, int initMonth, int initDay, int initHour, int initMinute, int initSecond);

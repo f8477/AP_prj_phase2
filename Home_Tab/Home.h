@@ -6,6 +6,7 @@
 #include "newpost.h"
 #include <QMainWindow>
 #include <QLineEdit>
+#include "commentpage.h"
 
 namespace Ui {
 class Home;
@@ -38,9 +39,20 @@ private slots:
 
     void on_pushButton_25_clicked();
 
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_32_clicked();
+
+    void on_pushButton_11_clicked();
+
+    void on_pushButton_17_clicked();
+
+    void on_pushButton_20_clicked();
+
 private:
     Ui::Home *ui;
     newpost *newpostWindow;
+    CommentPage *commentP;
 };
 
 #endif // HOME_H

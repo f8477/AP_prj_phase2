@@ -79,34 +79,34 @@ void Me::on_companySign_Button_3_clicked()
 //            return;
 //        }
 
-        QSqlQuery query;
-        query.prepare("SELECT Name, LastName, Email, Skills, Take_Job, Phone_Num,Bio  FROM Person WHERE Username = '"+ useid +"'");
+    QSqlQuery query;
+    query.prepare("SELECT Name, LastName, Email, Skills, Take_Job, Phone_Num,Bio  FROM Person WHERE Username = '"+ useid +"'");
 
-        if (!query.exec()) {
-            qWarning() << "Error: query execution failed -" << query.lastError();
+    if (!query.exec()) {
+        qWarning() << "Error: query execution failed -" << query.lastError();
 //            db.close();
-            return;
-        }
+        return;
+    }
 
-        if (query.next()) {
-            QString name = query.value("Name").toString();
-            QString lastName = query.value("LastName").toString();
-            QString email = query.value("Email").toString();
-            QString job = query.value("Take_Job").toString();
-            QString skills = query.value("Skills").toString();
-            QString phone = query.value("Phone_Num").toString();
-            QString bio = query.value("Bio").toString();
+    if (query.next()) {
+        QString name = query.value("Name").toString();
+        QString lastName = query.value("LastName").toString();
+        QString email = query.value("Email").toString();
+        QString job = query.value("Take_Job").toString();
+        QString skills = query.value("Skills").toString();
+        QString phone = query.value("Phone_Num").toString();
+        QString bio = query.value("Bio").toString();
 
-            ui->namee->setText(name);
-            ui->lastnamee->setText(lastName);
-            ui->email->setText(email);
-            ui->job->setText(job);
-            ui->bio->setText(bio);
-            ui->phone->setText(phone);
-            ui->skills->setText(skills);
-        } else {
-            qWarning() << "No data found";
-        }
+        ui->namee->setText(name);
+        ui->lastnamee->setText(lastName);
+        ui->email->setText(email);
+        ui->job->setText(job);
+        ui->bio->setText(bio);
+        ui->phone->setText(phone);
+        ui->skills->setText(skills);
+    } else {
+        qWarning() << "No data found";
+    }
 
 //        db.close();
 

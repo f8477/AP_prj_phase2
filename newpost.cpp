@@ -17,7 +17,7 @@ newpost::newpost(QWidget *parent) :
 
     QSqlDatabase database;
     database = QSqlDatabase::addDatabase("QSQLITE");
-    database.setDatabaseName("C:\\Users\\Sajjad\\Desktop\\AP Project_july 2024\\AP_prj_phase2\\project.db");
+    database.setDatabaseName("F:\\coding\\Projects\\AP_prj_phase2\\project.db");
     database.open();
 
 
@@ -30,14 +30,26 @@ newpost::~newpost()
 }
 void newpost::on_pushButton_clicked()
 {
+    QString post_id = "1";
+    QSqlQuery q;
+
+    q.exec("SELECT * FROM Post");
+    q.last();
+    if (q.isValid()){
+        int index = q.value("Post_ID").toInt();
+        index++;
+        post_id = QString::number(index);;
+    }else{
+        post_id = "1";
+    }
+
     QString text = ui->textEdit->toPlainText();
-    int post_id = 1;
-    int sender_id = 0;
+
+//    int sender_id = 0;
 //    Time T(0, 0, 0, 0, 0, 0);
     QString useid = User::getInstance().getUsername();
-    QSqlQuery q;
 //    ui->label->setText(useid);
-    q.exec("INSERT INTO Post(Content_Text, Sender_ID)VALUES('"+text+"', '"+useid+"')");
+    q.exec("INSERT INTO Post(Content_Text, Sender_ID, Post_ID)VALUES('"+text+"', '"+useid+"', '"+post_id+"')");
 
 
     close();

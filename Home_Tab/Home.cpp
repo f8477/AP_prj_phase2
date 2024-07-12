@@ -20,7 +20,8 @@
 Home::Home(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Home),
-    newpostWindow(nullptr)
+    newpostWindow(nullptr),
+    commentP(nullptr)
 {
 
     ui->setupUi(this);
@@ -40,6 +41,9 @@ Home::~Home()
     delete ui;
     if (newpostWindow) {
             delete newpostWindow;
+    }
+    if (commentP) {
+            delete commentP;
     }
 }
 
@@ -168,13 +172,32 @@ void Home::on_pushButton_4_clicked()
 }
 
 
+QString pid(){
+    QString post_id = "1";
+    QSqlQuery q;
+
+    q.exec("SELECT * FROM Post");
+    q.last();
+    if (q.isValid()){
+        int index = q.value("Post_ID").toInt();
+        index++;
+        post_id = QString::number(index);;
+    }else{
+        post_id = "1";
+    }
+
+    return post_id;
+}
+
+
 void Home::on_pushButton_23_clicked()
 {
     QString useid = User::getInstance().getUsername();
     QString text = ui->textEdit_2->toPlainText();
+    QString post_id = pid();
 
     QSqlQuery q;
-    q.exec("INSERT INTO Post(Content_Text, Sender_ID)VALUES('"+text+"', '"+useid+"')");
+    q.exec("INSERT INTO Post(Content_Text, Sender_ID, Post_ID)VALUES('"+text+"', '"+useid+"', '"+post_id+"')");
     QMessageBox::information(this, "Repost", "Repost successfuly");
 
 }
@@ -184,9 +207,10 @@ void Home::on_pushButton_35_clicked()
 {
     QString useid = User::getInstance().getUsername();
     QString text = ui->textEdit_8->toPlainText();
+    QString post_id = pid();
 
     QSqlQuery q;
-    q.exec("INSERT INTO Post(Content_Text, Sender_ID)VALUES('"+text+"', '"+useid+"')");
+    q.exec("INSERT INTO Post(Content_Text, Sender_ID, Post_ID)VALUES('"+text+"', '"+useid+"', '"+post_id+"')");
     QMessageBox::information(this, "Repost", "Repost successfuly");
 }
 
@@ -195,9 +219,10 @@ void Home::on_pushButton_37_clicked()
 {
     QString useid = User::getInstance().getUsername();
     QString text = ui->textEdit_4->toPlainText();
+    QString post_id = pid();
 
     QSqlQuery q;
-    q.exec("INSERT INTO Post(Content_Text, Sender_ID)VALUES('"+text+"', '"+useid+"')");
+    q.exec("INSERT INTO Post(Content_Text, Sender_ID, Post_ID)VALUES('"+text+"', '"+useid+"', '"+post_id+"')");
     QMessageBox::information(this, "Repost", "Repost successfuly");
 }
 
@@ -206,9 +231,10 @@ void Home::on_pushButton_39_clicked()
 {
     QString useid = User::getInstance().getUsername();
     QString text = ui->textEdit_5->toPlainText();
+    QString post_id = pid();
 
     QSqlQuery q;
-    q.exec("INSERT INTO Post(Content_Text, Sender_ID)VALUES('"+text+"', '"+useid+"')");
+    q.exec("INSERT INTO Post(Content_Text, Sender_ID, Post_ID)VALUES('"+text+"', '"+useid+"', '"+post_id+"')");
     QMessageBox::information(this, "Repost", "Repost successfuly");
 }
 
@@ -217,9 +243,10 @@ void Home::on_pushButton_41_clicked()
 {
     QString useid = User::getInstance().getUsername();
     QString text = ui->textEdit_6->toPlainText();
+    QString post_id = pid();
 
     QSqlQuery q;
-    q.exec("INSERT INTO Post(Content_Text, Sender_ID)VALUES('"+text+"', '"+useid+"')");
+    q.exec("INSERT INTO Post(Content_Text, Sender_ID, Post_ID)VALUES('"+text+"', '"+useid+"', '"+post_id+"')");
     QMessageBox::information(this, "Repost", "Repost successfuly");
 }
 
@@ -227,5 +254,147 @@ void Home::on_pushButton_41_clicked()
 void Home::on_pushButton_25_clicked()
 {
 
+}
+
+
+void Home::on_pushButton_5_clicked()
+{
+//    GlobalUser::getInstance().setUsername("new_username");
+    QString text = ui->textEdit_2->toPlainText();
+    QString username = ui->label_6->text();
+//    QMessageBox::information(this, "text", text);
+//    QMessageBox::information(this, "username", username);
+
+
+//    QSqlQuery q;
+//    q.exec("SELECT * FROM Post WHERE Content_Text = '"+text+"' AND Sender_ID = '"+username+"'");
+    QString Uid;
+
+
+
+    QSqlQuery query;
+    query.prepare("SELECT Post_ID FROM Post WHERE Sender_ID = '"+username+"' AND Content_TEXT = '"+text+"'");
+
+    if (!query.exec()) {
+        QMessageBox::information(this, "Uid", username);
+
+        qWarning() << "Error: query execution failed -" << query.lastError();
+//            db.close();
+        return;
+    }
+
+    if (query.next()) {
+        Uid = query.value(0).toString();
+    } else {
+        qWarning() << "No data found";
+    }
+
+    GlobalUser::getInstance().setUsername(Uid);
+
+//    QMessageBox::information(this, "Uid", Uid);
+    if (!commentP) {
+       commentP = new CommentPage(this);
+    }
+    commentP->show();
+}
+
+
+void Home::on_pushButton_32_clicked()
+{
+        QString text = ui->textEdit_8->toPlainText();
+        QString username = ui->label_29->text();
+        QString Uid;
+        QSqlQuery query;
+        query.prepare("SELECT Post_ID FROM Post WHERE Sender_ID = '"+username+"' AND Content_TEXT = '"+text+"'");
+        if (!query.exec()) {
+            QMessageBox::information(this, "Uid", username);
+            qWarning() << "Error: query execution failed -" << query.lastError();
+            return;
+        }
+        if (query.next()) {
+            Uid = query.value(0).toString();
+        } else {
+            qWarning() << "No data found";
+        }
+        GlobalUser::getInstance().setUsername(Uid);
+        if (!commentP) {
+           commentP = new CommentPage(this);
+        }
+        commentP->show();
+}
+
+
+void Home::on_pushButton_11_clicked()
+{
+    QString text = ui->textEdit_4->toPlainText();
+    QString username = ui->label_10->text();
+    QString Uid;
+    QSqlQuery query;
+    query.prepare("SELECT Post_ID FROM Post WHERE Sender_ID = '"+username+"' AND Content_TEXT = '"+text+"'");
+    if (!query.exec()) {
+        QMessageBox::information(this, "Uid", username);
+        qWarning() << "Error: query execution failed -" << query.lastError();
+        return;
+    }
+    if (query.next()) {
+        Uid = query.value(0).toString();
+    } else {
+        qWarning() << "No data found";
+    }
+    GlobalUser::getInstance().setUsername(Uid);
+    if (!commentP) {
+       commentP = new CommentPage(this);
+    }
+    commentP->show();
+}
+
+
+void Home::on_pushButton_17_clicked()
+{
+    QString text = ui->textEdit_5->toPlainText();
+    QString username = ui->label_12->text();
+    QString Uid;
+    QSqlQuery query;
+    query.prepare("SELECT Post_ID FROM Post WHERE Sender_ID = '"+username+"' AND Content_TEXT = '"+text+"'");
+    if (!query.exec()) {
+        QMessageBox::information(this, "Uid", username);
+        qWarning() << "Error: query execution failed -" << query.lastError();
+        return;
+    }
+    if (query.next()) {
+        Uid = query.value(0).toString();
+    } else {
+        qWarning() << "No data found";
+    }
+    GlobalUser::getInstance().setUsername(Uid);
+    if (!commentP) {
+       commentP = new CommentPage(this);
+    }
+    commentP->show();
+}
+
+
+void Home::on_pushButton_20_clicked()
+{
+    QString text = ui->textEdit_6->toPlainText();
+    QString username = ui->label_14->text();
+    QString Uid;
+    QSqlQuery query;
+    query.prepare("SELECT Post_ID FROM Post WHERE Sender_ID = '"+username+"' AND Content_TEXT = '"+text+"'");
+    if (!query.exec()) {
+        QMessageBox::information(this, "Uid", username);
+        qWarning() << "Error: query execution failed -" << query.lastError();
+        return;
+    }
+    if (query.next()) {
+        Uid = query.value(0).toString();
+    } else {
+        qWarning() << "No data found";
+    }
+    GlobalUser::getInstance().setUsername(Uid);
+    if (!commentP) {
+       commentP = new CommentPage(this);
+    }
+    commentP->show();
 }
 

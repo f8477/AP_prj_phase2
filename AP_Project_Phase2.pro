@@ -17,6 +17,7 @@ SOURCES += \
     account.cpp \
     accountClass.cpp \
     comment.cpp \
+    commentpage.cpp \
     company.cpp \
     content.cpp \
     directmessage.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     account.h \
     accountClass.h \
     comment.h \
+    commentpage.h \
     company.h \
     content.h \
     directmessage.h \
@@ -63,6 +65,7 @@ FORMS += \
     Me_Tab/Me.ui \
     Messaging_Tab/Messaging.ui \
     MyNetwork_Tab/MyNetwork.ui \
+    commentpage.ui \
     mainwindow.ui \
     newpost.ui \
     profileedit.ui \

@@ -16,6 +16,9 @@ public:
     explicit veiwperson(QWidget *parent = nullptr);
     ~veiwperson();
 
+private slots:
+    void on_Reload_clicked();
+
 private:
     Ui::veiwperson *ui;
 };

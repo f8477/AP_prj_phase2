@@ -67,18 +67,19 @@ MainWindow::~MainWindow()
 void MainWindow::on_Search_button_clicked()
 {
     QString Uid = ui->search_lineEdit->text();
-    //    GlobalUser::getInstance().setUsername("Sarah11");
+    GlobalUser::getInstance().setUsername(Uid);
 
     QSqlQuery q;
     q.exec("SELECT Username FROM Person WHERE Username = '"+Uid+"'");
     if (!q.first()){
         QMessageBox::warning(this, "Error", "this account not found!");
+    }else{
+        if (!ViewP) {
+           ViewP = new veiwperson(this);
+        }
+        ViewP->show();
     }
-    GlobalUser::getInstance().setUsername("Sarah11");
 
-    if (!ViewP) {
-       ViewP = new veiwperson(this);
-    }
-    ViewP->show();
+
 }
 

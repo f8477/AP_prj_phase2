@@ -36,7 +36,9 @@ string Person::getLastName(const QString Uid)
     q.exec("SELECT * FROM Person WHERE Username = '"+ Uid +"'");
     QString N = q.value("LastName").toString();
     Lastname = N.toStdString();
+    database.close();
     return Lastname;
+
 }
 
 string Person::getSkills(const QString Uid)
@@ -49,6 +51,8 @@ string Person::getSkills(const QString Uid)
     q.exec("SELECT * FROM Person WHERE Username = '"+ Uid +"'");
     QString N = q.value("Skills").toString();
     Skills = N.toStdString();
+    database.close();
+
     return Skills;
 }
 
@@ -69,6 +73,7 @@ void Person::setName(const string &name, const QString Uid)
     QString N = QString::fromStdString(name);
     q.exec("UPDATE Person SET Name = '"+N+"' WHERE Username = '"+Uid+"' ");
     Name = name;
+    database.close();
 }
 
 void Person::setLastName(const string &lastname, const QString Uid)
@@ -81,6 +86,7 @@ void Person::setLastName(const string &lastname, const QString Uid)
     QString N = QString::fromStdString(lastname);
     q.exec("UPDATE Person SET LastName = '"+N+"' WHERE Username = '"+Uid+"' ");
     Lastname = lastname;
+    database.close();
 }
 
 void Person::setSkills(const string &skills, const QString Uid)
@@ -93,6 +99,7 @@ void Person::setSkills(const string &skills, const QString Uid)
     QString N = QString::fromStdString(skills);
     q.exec("UPDATE Person SET Skills = '"+N+"' WHERE Username = '"+Uid+"' ");
     Skills = skills;
+    database.close();
 }
 
 void Person::addSkill(const string &skill, const QString Uid)
@@ -108,6 +115,7 @@ void Person::addSkill(const string &skill, const QString Uid)
     QSqlQuery q;
     QString N = QString::fromStdString(Skills);
     q.exec("UPDATE Person SET Skills = '"+N+"' WHERE Username = '"+Uid+"' ");
+    database.close();
 }
 
 void Person::take_job(Job &job)
