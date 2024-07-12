@@ -110,6 +110,13 @@ void Me::on_companySign_Button_3_clicked()
 
 //        db.close();
 
+    ui->namee->setText(name);
+    ui->lastname->setText(lastname);
+    ui->skills->setText(skills);
+    ui->job->setText(job);
+    ui->phone->setText(phone);
+    ui->email->setText(email);
+    ui->bio->setText(bio);
 
 //    QString name = q.value(0).toString();
 //    QMessageBox::warning(this, "Error", name);
@@ -135,5 +142,15 @@ void Me::on_companySign_Button_3_clicked()
 //    ui->email->setText(email);
 //    ui->bio->setText(bio);
     ui->username->setText(useid);
+}
+
+
+void Me::on_companySign_Button_clicked()
+{
+    CompanySignup companySignup(this);
+    if(companySignup.exec() == QDialog::Accepted)
+    {
+        companySignup.clickForSignup();
+    }
 }
 

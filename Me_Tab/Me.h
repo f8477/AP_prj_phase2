@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include "profileedit.h"
+#include "companysignup.h"
+
 #include <QWidget>
 #include <QTextEdit>
 #include <QSqlDatabase>
@@ -22,6 +24,8 @@ private slots:
     void on_companySign_Button_2_clicked();
 
     void on_companySign_Button_3_clicked();
+
+    void on_companySign_Button_clicked();
 
 private:
     Ui::Me *ui;

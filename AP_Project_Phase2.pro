@@ -12,6 +12,7 @@ SOURCES += \
     Home_Tab/Home.cpp \
     Jobs_Tab/Jobs.cpp \
     Me_Tab/Me.cpp \
+    Me_Tab/companysignup.cpp \
     Messaging_Tab/Messaging.cpp \
     MyNetwork_Tab/MyNetwork.cpp \
     account.cpp \
@@ -38,6 +39,7 @@ HEADERS += \
     Home_Tab/Home.h \
     Jobs_Tab/Jobs.h \
     Me_Tab/Me.h \
+    Me_Tab/companysignup.h \
     Messaging_Tab/Messaging.h \
     MyNetwork_Tab/MyNetwork.h \
     account.h \
@@ -63,6 +65,7 @@ FORMS += \
     Home_Tab/Home.ui \
     Jobs_Tab/Jobs.ui \
     Me_Tab/Me.ui \
+    Me_Tab/companysignup.ui \
     Messaging_Tab/Messaging.ui \
     MyNetwork_Tab/MyNetwork.ui \
     commentpage.ui \
